@@ -17,7 +17,7 @@ namespace Store.Business.Manager
             this.context = context;
         }
 
-        public int GetProductsCount(int? minPrice, int? maxPrice, string size)
+        public int GetProductsCount(int? minPrice, int? maxPrice, string size, string searchTerm)
         {
             var query = this.context.Products.Include(p => p.ProductSizes).AsQueryable();
 
@@ -34,12 +34,17 @@ namespace Store.Business.Manager
             if (minPrice.HasValue)
             {
                 query = query.Where(p => p.Price >= minPrice.Value);
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(p => p.Name.Contains(searchTerm));
             }
 
             return query.ToList().Count;
         }
 
-        public List<Product> GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size)
+        public List<Product> GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size, string sortDirection, string searchTerm)
         {
             var query = this.context.Products.Include(p => p.ProductSizes).AsQueryable();
 
@@ -56,6 +61,20 @@ namespace Store.Business.Manager
             if (minPrice.HasValue)
             {
                 query = query.Where(p => p.Price >= minPrice.Value);
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(p => p.Name.Contains(searchTerm));
+            }
+
+            if (!string.IsNullOrEmpty(sortDirection) && sortDirection == "ABS")
+            {
+                query = query.OrderBy(u => u.Price);
+            }
+            else
+            {
+                query = query.OrderByDescending(u => u.Price);
             }
 
             return query.Skip(skip).Take(take).ToList();

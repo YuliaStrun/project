@@ -24,9 +24,9 @@ namespace ServerStore.Controllers
         /// Needed products and productsCount
         /// </returns>
         [HttpGet]
-        public JsonResult GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size)
+        public JsonResult GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size, string sortDirection, string searchTerm)
         {
-            ProductsData products = this.productsService.GetAllProducts(skip, take, minPrice, maxPrice, size);
+            ProductsData products = this.productsService.GetAllProducts(skip, take, minPrice, maxPrice, size, sortDirection, searchTerm);
             return this.Json(products);
         }
 

@@ -1,7 +1,7 @@
 import { ProductInCart } from 'src/api/interfaces/ProductInCart';
 import { RawCartData } from 'src/api/interfaces/RawCartData';
-import { CartProduct } from 'src/api/interfaces/CartProduct';
 import { CartData } from 'src/api/interfaces/CartData';
+import { CartProduct } from 'src/api/interfaces/CartProduct';
 
 export const cartAdapter = (info: RawCartData) => {
   const arr: ProductInCart[] = [];

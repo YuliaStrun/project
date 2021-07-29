@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
-export const useQuery = (property = '') => {
+export const useQuery = (property = '', defaultValue?: string) => {
   const history = useHistory();
   const location = useLocation();
-  const [value, setValue] = useState(new URLSearchParams(location.search).get(property) ?? '');
+  const [value, setValue] = useState(new URLSearchParams(location.search).get(property) ?? defaultValue ?? '');
 
   const updateQuery = (newValue = '') => {
     const newQuery = new URLSearchParams(location.search);

@@ -27,19 +27,23 @@ export const Filtering: React.FC<Props> = ({ setNewFilters }) => {
   };
 
   const handleUpdateMinPrice = (event: React.ChangeEvent<{ value: unknown }>) => {
-    if (!isNaN(Number(event.target.value))) {
+    if (!isNaN(Number(event.target.value)) && (event.target.value as string).length < 7) {
       updateMinPrice(event.target.value as string);
+    } else {
+      updateMinPrice('');
     }
   };
 
   const handleUpdateMaxPrice = (event: React.ChangeEvent<{ value: unknown }>) => {
-    if (!isNaN(Number(event.target.value))) {
+    if (!isNaN(Number(event.target.value)) && (event.target.value as string).length < 7) {
       updateMaxPrice(event.target.value as string);
+    } else {
+      updateMaxPrice('');
     }
   };
 
   const onClick = () => {
-    if (minPrice > maxPrice) {
+    if (minPrice > maxPrice && Number(maxPrice) !== 0) {
       const timer = setTimeout(
         () => setNewFilters(Number(maxPrice), Number(minPrice), size.toString()),
         TIMEOUT_BETWEEN_UPDATING_INFO,
@@ -57,6 +61,11 @@ export const Filtering: React.FC<Props> = ({ setNewFilters }) => {
     }
   };
 
+  const click = (event?: React.KeyboardEvent) => {
+    if (event?.key === 'Enter') {
+      onClick();
+    }
+  };
   return (
     <>
       <FormControl className={classes.root}>
@@ -67,6 +76,7 @@ export const Filtering: React.FC<Props> = ({ setNewFilters }) => {
             value={size}
             onChange={handleChange}
             className={classes.size}
+            onKeyDown={click}
           >
             <option aria-label="None" value="" />
             {sizeList.map((currentValue: string) => (
@@ -86,6 +96,7 @@ export const Filtering: React.FC<Props> = ({ setNewFilters }) => {
             className={classes.textField}
             value={minPrice}
             onChange={handleUpdateMinPrice}
+            onKeyDown={click}
           />
           <TextField
             id="outlined-basic"
@@ -95,6 +106,7 @@ export const Filtering: React.FC<Props> = ({ setNewFilters }) => {
             className={classes.textField}
             value={maxPrice}
             onChange={handleUpdateMaxPrice}
+            onKeyDown={click}
           />
         </form>
         <Button className={classes.button} onClick={onClick}>

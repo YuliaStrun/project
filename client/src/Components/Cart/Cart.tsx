@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Pagination } from '@material-ui/lab';
 import { Button } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
+import { useHistory } from 'react-router-dom';
 
 import { useCartStore } from 'src/hooks/useCartStore';
 import { CartItem } from 'src/Components/CartItem/CartItem';
@@ -13,6 +14,7 @@ const MOCKED_PRODUCT_COUNT = 9;
 
 export const Cart = observer((): JSX.Element => {
   const classes = useStyles();
+  const history = useHistory();
   const [currentPage, setCurrentPage] = useState(1);
   const СartStore = useCartStore();
 
@@ -31,13 +33,17 @@ export const Cart = observer((): JSX.Element => {
     }
   };
 
+  const onClick = () => {
+    history.push('/order');
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.cart}>
         <div className={classes.pagination}>
           {СartStore.cart?.products.map((currentProduct: ProductInCart) => (
             <CartItem
-              key={`${currentProduct.productProperty.size} ${currentProduct.product.id}`}
+              key={`${currentProduct.product.id} ${currentProduct.productProperty.size}`}
               product={currentProduct}
               onRemove={onRemove}
               onUpdate={onUpdate}

@@ -7,6 +7,7 @@ import { useCartStore } from 'src/hooks/useCartStore';
 
 import { StaticRoute } from './Components/Routes/StaticRoute/StaticRoute';
 import { MainRoute } from './Components/Routes/MainRoute/MainRoute';
+import { Order } from './Components/Order/Order';
 import { CartRoute } from './Components/Routes/CartRoute/CartRoute';
 import { ProductCard } from './Components/ProductCard/ProductCard';
 import { NotFound } from './Components/NotFound/NotFound';
@@ -27,6 +28,9 @@ export const App: React.FC = () => {
       <Router>
         <StaticRoute />
         <Switch>
+          <Route path="/order">
+            <Order />
+          </Route>
           <Route path="/cart">
             <CartRoute />
           </Route>

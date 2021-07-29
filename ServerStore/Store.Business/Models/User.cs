@@ -6,6 +6,11 @@ namespace Store.Business.Models
 {
     public class User
     {
+        public User()
+        {
+            Orders = new List<Order>();
+        }
+
         public int Id { get; set; }
 
         public string Login { get; set; }
@@ -13,5 +18,7 @@ namespace Store.Business.Models
         public string Password { get; set; }
 
         public virtual Cart Cart { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

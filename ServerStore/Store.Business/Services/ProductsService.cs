@@ -18,10 +18,10 @@ namespace Store.Business.Services
             this.productsManager = new ProductsManager(this.context);
         }
 
-        public ProductsData GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size)
+        public ProductsData GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size, string sortDirection, string searchTerm)
         {
-            var products = this.productsManager.GetAllProducts(skip, take, minPrice, maxPrice, size);
-            int productsCount = this.productsManager.GetProductsCount(minPrice, maxPrice, size);
+            var products = this.productsManager.GetAllProducts(skip, take, minPrice, maxPrice, size, sortDirection, searchTerm);
+            int productsCount = this.productsManager.GetProductsCount(minPrice, maxPrice, size, searchTerm);
 
             return new ProductsData { ProductsList = products, ProductsCount = productsCount };
         }

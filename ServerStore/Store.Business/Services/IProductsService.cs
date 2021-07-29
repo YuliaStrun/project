@@ -9,7 +9,7 @@ namespace Store.Business.Services
 {
     public interface IProductsService
     {
-        ProductsData GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size);
+        ProductsData GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size, string sortDirection, string searchTerm);
 
         Product GetProductById(int id);
     }

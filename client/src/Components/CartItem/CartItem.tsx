@@ -5,7 +5,11 @@ import RemoveCircleOutlineOutlinedIcon from '@material-ui/icons/RemoveCircleOutl
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 
+<<<<<<< HEAD
 import { ProductInCart } from 'src/api/interfaces/ProductInCart';
+=======
+import { CartData } from 'src/api/interfaces/CartData';
+>>>>>>> f80d257e5a777c346694bca5ca021705bf785b89
 
 import { useStyles } from './CartItem.styles';
 
@@ -17,7 +21,6 @@ interface Props {
 export const CartItem: React.FC<Props> = ({ product, onRemove, onUpdate }) => {
   const classes = useStyles();
   const item = product.product;
-
   const handleRemove = (productId: number) => {
     onRemove(1, productId, product.productProperty.size.toString());
   };

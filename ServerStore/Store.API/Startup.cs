@@ -29,6 +29,7 @@ namespace ServerStore
             services.AddScoped<ProductsService, ProductsService>();
             services.AddScoped<CartService, CartService>();
             services.AddScoped<ProductsManager, ProductsManager>();
+            services.AddScoped<OrderService, OrderService>();
             services.AddControllers();
             services.AddMvc().AddNewtonsoftJson(options =>
             {

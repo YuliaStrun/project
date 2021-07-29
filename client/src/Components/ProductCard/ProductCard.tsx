@@ -22,7 +22,7 @@ export const ProductCard: React.FC<RouteComponentProps<Props>> = observer(({ mat
   const СartStore = useCartStore();
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [isNotFound, setIsNotFound] = useState<boolean>(false);
-  const [size, setSize] = React.useState('');
+  const [size, setSize] = useState('');
 
   const setNewSize = (newSize: string) => {
     setSize(newSize);

@@ -8,9 +8,9 @@ namespace Store.Business.Manager
 {
     public interface IProductsManager
     {
-        int GetProductsCount(int? minPrice, int? maxPrice, string size);
+        int GetProductsCount(int? minPrice, int? maxPrice, string size, string searchTerm);
 
-        List<Product> GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size);
+        List<Product> GetAllProducts(int skip, int take, int? minPrice, int? maxPrice, string size, string sortDirection, string searchTerm);
 
         Product GetProductById(int id);
     }

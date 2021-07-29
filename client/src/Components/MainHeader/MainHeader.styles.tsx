@@ -49,6 +49,7 @@ export const useStyles = makeStyles({
   },
   logoText: {
     width: '100%',
+    height: '80%',
     fontSize: '100%',
     fontFamily: 'Arial, Verdana, sans-serif',
     textAlign: 'center',

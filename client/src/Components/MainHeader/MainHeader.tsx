@@ -34,13 +34,19 @@ export const MainHeader = observer((): JSX.Element => {
     history.push(`/admin`);
   };
 
+  const homeClick = () => {
+    history.push(`/`);
+  };
+
   return (
     <>
       <div className={classes.root}>
         <Button className={classes.adminPage} onClick={addToAdmin}>
           Admin
         </Button>
-        <div className={classes.logoText}>Store</div>
+        <div className={classes.logoText}>
+          <Button onClick={homeClick}>Store</Button>
+        </div>
         <Box className={classes.left} />
         <Box className={classes.right}>
           <Button
@@ -65,7 +71,7 @@ export const MainHeader = observer((): JSX.Element => {
         </MenuItem>
         <MenuItem onClick={handleClose} classes={{ root: classes.text }}>
           {' '}
-          Sing in
+          Sing up
         </MenuItem>
       </Menu>
     </>

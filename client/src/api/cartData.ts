@@ -1,8 +1,8 @@
+import { CartData } from './interfaces/CartData';
 import { RawCartData } from './interfaces/RawCartData';
 import { getData } from './getData';
 import { apiUrl } from './constants';
 import { cartAdapter } from './utils/cartAdapters';
-import { CartData } from './interfaces/CartData';
 
 export const getProductsFromCart = async (id: number, skip: number, take: number): Promise<CartData> => {
   const params = new URLSearchParams();
