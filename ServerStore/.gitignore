@@ -1,0 +1,4 @@
+**/.vs/*
+**/bin/*
+**/obj/*
+**/Store.API/wwwroot/images/*

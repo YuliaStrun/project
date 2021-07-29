@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+
+  sql-server-db:
+    container_name: sql-server-db
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+      - "1438:1433"
+    environment:
+      SA_PASSWORD: "123456789gfuir7tdfYWRHUWR"
+      ACCEPT_EULA: "Y"
+    volumes: 
+      - ./StoreBackUp/StoreBackUp:/var/opt/mssql/data/Store
+  server:
+    container_name: server
+    build:
+      context: ./
+    ports:
+      - 5001:80
+    volumes: 
+      - ./ServerStore/Store.API/appsettings.json:/app/appsettings.json
+    depends_on: 
+      - sql-server-db
